@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Завдання 1.2</h1>
+    <p>
+      Задача 1. Дано історію цін на цінні папери за деякий період (згенерувати
+      від 1 до 10000) <br />
+      2.Сформувати новий масив, у якому є номери тільки тих, що більші за 1000
+      грн.
+    </p>
+    <script>
+      const min = 1,
+        max = 10000;
+      function generatePricesList(length) {
+        const prices = [];
+        for (let i = 0; i < length; i++) {
+          // Генеруємо випадкову ціну у діапазоні від 1 до 10000
+          let randomPrice = min + Math.floor(Math.random() * (max - min + 1));
+          // Округлюємо до двох знаків після коми
+          const roundedPrice = Number(randomPrice.toFixed(2));
+          prices.push(roundedPrice);
+        }
+        return prices;
+      }
+      // Генеруємо масив довільних цін у кількості 10000
+      const PricesList = generatePricesList(10000);
+      console.log(PricesList);
+      // Виконуєм задачу
+      let greaterThanThePreviousValue = [];
+      PricesList.map((el, i) => {
+        if (i === 0 || el > PricesList[i - 1])
+          greaterThanThePreviousValue.push(el);
+      });
+      document.write(greaterThanThePreviousValue);
+    </script>
+  </body>
+</html>
